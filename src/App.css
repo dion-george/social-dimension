@@ -9,18 +9,12 @@
   }
 }
 
-/* .App-header {
-  background-color: #E16F7F;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
-
 .title-bold {
   font-family: 'Merriweather', serif;
   font-size: 56px;
+}
+
+.subtitle-medium {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
 }

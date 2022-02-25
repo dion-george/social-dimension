@@ -1,30 +1,59 @@
 import './App.css';
 import styled from 'styled-components';
-import logo from './assets/img/couple-illustration.png'; // Tell webpack this JS file uses this image
+import logo from './assets/img/couple-illustration.png';
+import useWindowDimensions from './hooks';
 
 const Nav = styled.div`
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+  height: ${props => props.height || 0}px;
 `;
 
 const HeroComponent = styled.header`
   background-color: #E16F7F;
   display: flex;
+  justify-content: center;
+  height: ${props => props.height || 0}px;
+`;
+
+const ImgWrapper = styled.div`
+  justify-content: center;
+`;
+
+const IllustrationImg = styled.img`
+  position: absolute;
+  top: ${props => props.top || 0}px;
+  height: ${props => props.height || 0}px;
+`;
+
+const Subtitle = styled.p`
+  margin-top: 100px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
 `;
 
 function App() {
+  const { height: windowHeight, width } = useWindowDimensions();
+  const NAV_HEIGHT = 100;
+  const imgHeight = windowHeight - NAV_HEIGHT;
+
   return (
-    <HeroComponent>
-      <Nav>
+    <HeroComponent height={windowHeight}>
+      {/* <ImgWrapper> */}
+      <IllustrationImg src={logo} alt="Logo" height={imgHeight} top={NAV_HEIGHT}/>
+      {/* </ImgWrapper> */}
+      <Nav height={NAV_HEIGHT}>
         <p>social dimension</p>
       </Nav>
-      <header className="App-header">
+      <div>
+        <Subtitle >
+          before you tie the knot ..
+        </Subtitle>
+
         <p className="title-bold">
           share the real you with your potential partner.
         </p>
-      </header>
-      <img src={logo} alt="Logo" />
+      </div>
+    
+      
     </HeroComponent>
   );
 }
